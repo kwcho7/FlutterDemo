@@ -8,7 +8,6 @@ class ButtonsPage extends StatefulWidget {
 }
 
 class ButtonState extends State<ButtonsPage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,17 +114,105 @@ class ButtonState extends State<ButtonsPage> {
                     ),
                     Row(
                       children: <Widget>[
-                        FlatButton(
-                          onPressed: () {},
-                          child: Text("FlatButton Enable"),
+                        ButtonTheme(
+                          child: FlatButton(
+                            onPressed: () {},
+                            child: Text("FlatButton Height 50"),
+                          ),
                         ),
-                        FlatButton(
-                          onPressed: null,
-                          child: Text("FlatButton Disable"),
+                        ButtonTheme(
+                          height: 18,
+                          child: FlatButton(
+                            onPressed: () {},
+                            child: Text("FlatButton Height 18"),
+                          ),
                         )
                       ],
                     ),
-
+                    Row(
+                      children: <Widget>[
+                        ButtonTheme(
+                          shape: Border.all(
+                            width: 1,
+                            color: Colors.blue,
+                          ),
+                          child: FlatButton(
+                            onPressed: () {},
+                            child: Text("FlatButton Border"),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        ButtonTheme(
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
+                              side: BorderSide()),
+                          child: FlatButton(
+                              onPressed: () {},
+                              child: Text("FlatButton Rounded Border")),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 25,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                            ),
+                            child: ButtonTheme(
+                              child: FlatButton(
+                                  onPressed: (){},
+                                  child: Text("FlatButton Solid")
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 8,),
+                        SizedBox(
+                          height: 25,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                            ),
+                            child: ButtonTheme(
+                              shape: Border.all(
+                                color: Colors.black
+                              ),
+                              child: FlatButton(
+                                  onPressed: (){},
+                                  child: Text("FlatButton Solid Border")
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 8,),
+                    Row(
+                      children: <Widget>[
+                        SizedBox(height: 30,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.all(Radius.circular(8))
+                            ),
+                            child: ButtonTheme(
+                              height: 30,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(8)),
+                                side: BorderSide(color: Colors.black)
+                              ),
+                              child: FlatButton(onPressed: (){}, child: Text("FlatButton sold round border")),
+                            ),
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               )
