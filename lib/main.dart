@@ -3,13 +3,6 @@ import 'package:flutter/material.dart';
 import 'buttons/ButtonPage.dart';
 
 
-// dev issue 1
-// dev issue 2
-// dev issue 3
-// dev issue 4
-
-
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

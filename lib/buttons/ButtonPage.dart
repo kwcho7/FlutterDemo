@@ -7,9 +7,6 @@ class ButtonsPage extends StatefulWidget {
   }
 }
 
-// master issue 2
-
-
 class ButtonState extends State<ButtonsPage> {
   Widget _buildScroll(Widget child) {
     return LayoutBuilder(builder: (context, viewportConstraint) {
