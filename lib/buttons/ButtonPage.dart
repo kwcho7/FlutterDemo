@@ -9,6 +9,7 @@ class ButtonsPage extends StatefulWidget {
 
 class ButtonState extends State<ButtonsPage> {
   int _value = 0;
+  String dropDownValue = "One";
   FloatingButtonType _floatingButtonType = FloatingButtonType.Action;
 
   Widget _buildScroll(Widget child) {
@@ -320,8 +321,6 @@ class ButtonState extends State<ButtonsPage> {
     );
   }
 
-  String dropDownValue = "One";
-
   Widget _dropDownButtons(BuildContext context) {
     return Container(
       color: Colors.grey.shade100,
@@ -357,6 +356,7 @@ class ButtonState extends State<ButtonsPage> {
       ),
     );
   }
+
 }
 
 enum FloatingButtonType { Action, Expand }
