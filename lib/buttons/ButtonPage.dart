@@ -384,7 +384,6 @@ class ButtonState extends State<ButtonsPage> {
                   child: PopupMenuButton(
                     onSelected: (v) {
                       setState(() {
-                        print("v.$v");
                         _popupMenuValue = v;
                       });
                     },
