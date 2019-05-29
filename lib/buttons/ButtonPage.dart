@@ -36,7 +36,8 @@ class ButtonState extends State<ButtonsPage> {
             children: <Widget>[
               _raisedButtons(context),
               _flatButtons(context),
-              _iconButtons(context)
+              _iconButtons(context),
+              _dropDownButtons(context),
             ],
           ),
         ),
@@ -315,6 +316,44 @@ class ButtonState extends State<ButtonsPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  String dropDownValue = "One";
+
+  Widget _dropDownButtons(BuildContext context) {
+    return Container(
+      color: Colors.grey.shade100,
+      margin: EdgeInsets.only(left: 18, right: 18, bottom: 18),
+      padding: EdgeInsets.all(8),
+      child: Container(
+        alignment: Alignment.topLeft,
+        child: Row(
+          children: <Widget>[
+            Text("DropDown Menu", style: TextStyle(fontWeight: FontWeight.bold),),
+            SizedBox(width: 18,),
+            DropdownButton(
+              value: dropDownValue,
+              items: ["One", "Two"].map((menu) {
+                return DropdownMenuItem<String>(
+                  value: menu,
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.account_circle),
+                      Text(menu),
+                    ],
+                  ),
+                );
+              }).toList(),
+              onChanged: (v) {
+                setState(() {
+                  dropDownValue = v;
+                });
+              },
+            ),
+          ],
+        )
       ),
     );
   }
