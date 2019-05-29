@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'basic/BasicPage.dart';
 import 'buttons/ButtonPage.dart';
 
 void main() => runApp(MyApp());
@@ -25,25 +26,78 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+enum TestPage{
+  main, buttons, basic
+}
+
+
 class _MyHomePageState extends State<MyHomePage> {
+
+  TestPage _testPage = TestPage.basic;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+        appBar: resolveAppBar(_testPage),
+        body: resolveWidget(_testPage)
+    );
+  }
+
+  AppBar resolveAppBar(TestPage testPage) {
+    switch(testPage){
+      case TestPage.main:
+        return AppBar(
           title: Text("Flutter Demo"),
-        ),
-        body: Container(
-            color: Colors.white,
-            alignment: Alignment.topLeft,
-            padding: EdgeInsets.all(18),
-            child: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _buttonsExample(context),
-                ],
-              ),
-            )));
+        );
+      case TestPage.buttons:
+      case TestPage.basic:
+        return null;
+      default:
+        throw Exception("not supported testPage.$testPage");
+    }
+  }
+
+  Widget resolveWidget(TestPage testPage){
+    switch(testPage){
+      case TestPage.main:
+        return _mainExample(context);
+      case TestPage.buttons:
+        return ButtonsPage();
+      case TestPage.basic:
+        return BasicPage();
+      default:
+        throw Exception("not supported testPage.$testPage");
+    }
+  }
+
+  Widget _mainExample(BuildContext context){
+    return Container(
+        color: Colors.white,
+        alignment: Alignment.topLeft,
+        padding: EdgeInsets.all(18),
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              _buttonsExample(context),
+              _basicExample(context),
+            ],
+          ),
+        )
+    );
+  }
+
+  Widget _basicExample(BuildContext context){
+    return RaisedButton(
+      onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return BasicPage();
+        }));
+      },
+      color: Colors.blue,
+      textColor: Colors.white,
+      child: Text("Basic Example"),
+    );
   }
 
   Widget _buttonsExample(BuildContext context) {
