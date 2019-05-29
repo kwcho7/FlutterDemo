@@ -8,6 +8,7 @@ class ButtonsPage extends StatefulWidget {
 }
 
 class ButtonState extends State<ButtonsPage> {
+  int _value = 0;
   FloatingButtonType _floatingButtonType = FloatingButtonType.Action;
 
   Widget _buildScroll(Widget child) {
@@ -270,7 +271,6 @@ class ButtonState extends State<ButtonsPage> {
     }
   }
 
-  int _volume = 0;
   Widget _iconButtons(BuildContext context) {
     return Container(
       color: Colors.grey[100],
@@ -279,10 +279,12 @@ class ButtonState extends State<ButtonsPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            "IconButtons",
-            textAlign: TextAlign.center,
-          ),
+          Container(
+              alignment: Alignment.center,
+              child: Text(
+                "IconButtons",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              )),
           Row(
             children: <Widget>[
               IconButton(
@@ -290,20 +292,21 @@ class ButtonState extends State<ButtonsPage> {
                   tooltip: "Increase value.",
                   onPressed: () {
                     setState(() {
-                      _volume++;
+                      _value++;
                     });
                   }),
-              Text("value.$_volume")
+              Text("value.$_value")
             ],
           ),
           Material(
             color: Colors.transparent,
             child: Ink(
-              decoration: ShapeDecoration(
-                color: Colors.blue,
-                shape: CircleBorder()
-              ),
+              width: 30,
+              height: 30,
+              decoration:
+                  ShapeDecoration(color: Colors.blue, shape: CircleBorder()),
               child: IconButton(
+                iconSize: 15,
                 icon: Icon(Icons.timer),
                 color: Colors.white,
                 tooltip: "Ink decoration",
