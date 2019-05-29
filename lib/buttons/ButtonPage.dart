@@ -41,6 +41,8 @@ class ButtonState extends State<ButtonsPage> {
               _iconButtons(context),
               _dropDownButtons(context),
               _popupMenuButtons(context),
+              _buttonBar(context),
+              SizedBox(height: 60,)
             ],
           ),
         ),
@@ -433,6 +435,103 @@ class ButtonState extends State<ButtonsPage> {
                   ),
                 ),
                 Text("selected.$_popupMenuValue")
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buttonBar(BuildContext context) {
+    return Material(
+      color: Colors.white,
+      child: Container(
+        margin: EdgeInsets.only(left: 18, right: 18, bottom: 18),
+        padding: EdgeInsets.all(8),
+        color: Colors.grey.shade100,
+        child: Column(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.topCenter,
+              child: Text("ButtonBar", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ),
+            ButtonBar(
+              alignment: MainAxisAlignment.start,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("start1"),
+                  onPressed: (){},
+                ),
+                RaisedButton(
+                  child: Text("start2"),
+                  onPressed: (){},
+                ),
+              ],
+            ),
+            ButtonBar(
+              alignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("center1"),
+                  onPressed: (){},
+                ),
+                RaisedButton(
+                  child: Text("center2"),
+                  onPressed: (){},
+                ),
+              ],
+            ),
+            ButtonBar(
+              alignment: MainAxisAlignment.end,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("end1"),
+                  onPressed: (){},
+                ),
+                RaisedButton(
+                  child: Text("end2"),
+                  onPressed: (){},
+                ),
+              ],
+            ),
+            ButtonBar(
+              alignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("around"),
+                  onPressed: (){},
+                ),
+                RaisedButton(
+                  child: Text("around"),
+                  onPressed: (){},
+                ),
+              ],
+            ),
+            ButtonBar(
+              alignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("Evenly"),
+                  onPressed: (){},
+                ),
+                RaisedButton(
+                  child: Text("Evenly"),
+                  onPressed: (){},
+                ),
+              ],
+            ),
+            ButtonBar(
+              alignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                RaisedButton(
+                  child: Text("Between"),
+                  onPressed: (){},
+                ),
+                RaisedButton(
+                  child: Text("Between"),
+                  onPressed: (){},
+                ),
               ],
             ),
           ],
