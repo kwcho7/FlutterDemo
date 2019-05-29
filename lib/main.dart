@@ -35,27 +35,30 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Container(
             color: Colors.white,
+            alignment: Alignment.topLeft,
             padding: EdgeInsets.all(18),
             child: SafeArea(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Container(
-                    alignment: Alignment.topLeft,
-                    margin: EdgeInsets.only(right: 18, left: 18),
-                    child: RaisedButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return ButtonsPage();
-                        }));
-                      },
-                      color: Colors.blue,
-                      textColor: Colors.white,
-                      child: Text("Button Example"),
-                    ),
-                  )
+                  _buttonsExample(context),
                 ],
               ),
             )));
+  }
+
+
+  Widget _buttonsExample(BuildContext context){
+    return RaisedButton(
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) {
+              return ButtonsPage();
+            }));
+      },
+      color: Colors.blue,
+      textColor: Colors.white,
+      child: Text("Button Example"),
+    );
   }
 }
