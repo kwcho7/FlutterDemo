@@ -39,6 +39,7 @@ class ButtonState extends State<ButtonsPage> {
               _flatButtons(context),
               _iconButtons(context),
               _dropDownButtons(context),
+              _popupMenuButtons(context),
             ],
           ),
         ),
@@ -327,36 +328,120 @@ class ButtonState extends State<ButtonsPage> {
       margin: EdgeInsets.only(left: 18, right: 18, bottom: 18),
       padding: EdgeInsets.all(8),
       child: Container(
-        alignment: Alignment.topLeft,
-        child: Row(
-          children: <Widget>[
-            Text("DropDown Menu", style: TextStyle(fontWeight: FontWeight.bold),),
-            SizedBox(width: 18,),
-            DropdownButton(
-              value: dropDownValue,
-              items: ["One", "Two"].map((menu) {
-                return DropdownMenuItem<String>(
-                  value: menu,
-                  child: Row(
-                    children: <Widget>[
-                      Icon(Icons.account_circle),
-                      Text(menu),
-                    ],
-                  ),
-                );
-              }).toList(),
-              onChanged: (v) {
-                setState(() {
-                  dropDownValue = v;
-                });
-              },
-            ),
-          ],
-        )
-      ),
+          alignment: Alignment.topLeft,
+          child: Row(
+            children: <Widget>[
+              Text(
+                "DropDown Menu",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                width: 18,
+              ),
+              DropdownButton(
+                value: dropDownValue,
+                items: ["One", "Two"].map((menu) {
+                  return DropdownMenuItem<String>(
+                    value: menu,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(Icons.account_circle),
+                        Text(menu),
+                      ],
+                    ),
+                  );
+                }).toList(),
+                onChanged: (v) {
+                  setState(() {
+                    dropDownValue = v;
+                  });
+                },
+              ),
+            ],
+          )),
     );
   }
 
+  String _popupMenuValue = "None";
+
+  Widget _popupMenuButtons(BuildContext context) {
+    return Material(
+      color: Colors.white,
+      child: Container(
+        margin: EdgeInsets.only(left: 18, right: 18, bottom: 18),
+        padding: EdgeInsets.all(8),
+        color: Colors.grey.shade100,
+        child: Column(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: Text("PopupMenuButtons"),
+            ),
+            Row(
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: PopupMenuButton(
+                    onSelected: (v) {
+                      setState(() {
+                        print("v.$v");
+                        _popupMenuValue = v;
+                      });
+                    },
+                    child: Text("Popup"),
+                    itemBuilder: (BuildContext context) {
+                      return [
+                        PopupMenuItem(
+                          child: Text("Popup item1"),
+                          value: "Popup item1",
+                        ),
+                        PopupMenuItem(
+                          child: Text("Popup item2"),
+                          value: "Popup item2",
+                        ),
+                        PopupMenuItem(
+                          child: Text("Popup item3"),
+                          value: "Popup item3",
+                        )
+                      ];
+                    },
+                  ),
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: PopupMenuButton(
+                    onSelected: (v) {
+                      setState(() {
+                        _popupMenuValue = v;
+                      });
+                    },
+                    icon: Icon(Icons.print),
+                    itemBuilder: (BuildContext context) {
+                      return [
+                        PopupMenuItem(
+                          child: Text("Icon item1"),
+                          value: "Icon item1",
+                        ),
+                        PopupMenuItem(
+                          child: Text("Icon item2"),
+                          value: "Icon item2",
+                        ),
+                        PopupMenuItem(
+                          child: Text("Icon item3"),
+                          value: "Icon item3",
+                        )
+                      ];
+                    },
+                  ),
+                ),
+                Text("selected.$_popupMenuValue")
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 enum FloatingButtonType { Action, Expand }
