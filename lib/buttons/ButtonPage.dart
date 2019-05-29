@@ -27,16 +27,15 @@ class ButtonState extends State<ButtonsPage> {
       appBar: AppBar(
         title: Text("Buttons Example"),
       ),
-      body: _buildScroll(Container(
+      body: _buildScroll(Material(
         color: Colors.white,
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // RaiseButton
               _raisedButtons(context),
-              // FlatButton
               _flatButtons(context),
+              _iconButtons(context)
             ],
           ),
         ),
@@ -244,7 +243,7 @@ class ButtonState extends State<ButtonsPage> {
     );
   }
 
-  _floatingActionButton(BuildContext context) {
+  Widget _floatingActionButton(BuildContext context) {
     switch (_floatingButtonType) {
       case FloatingButtonType.Action:
         return FloatingActionButton(
@@ -266,7 +265,55 @@ class ButtonState extends State<ButtonsPage> {
           label: Text("Add"),
           icon: Icon(Icons.add),
         );
+      default:
+        throw Exception("Not support floating buttons type.");
     }
+  }
+
+  int _volume = 0;
+  Widget _iconButtons(BuildContext context) {
+    return Container(
+      color: Colors.grey[100],
+      margin: EdgeInsets.only(left: 18, right: 18, bottom: 18),
+      padding: EdgeInsets.all(8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            "IconButtons",
+            textAlign: TextAlign.center,
+          ),
+          Row(
+            children: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.create),
+                  tooltip: "Increase value.",
+                  onPressed: () {
+                    setState(() {
+                      _volume++;
+                    });
+                  }),
+              Text("value.$_volume")
+            ],
+          ),
+          Material(
+            color: Colors.transparent,
+            child: Ink(
+              decoration: ShapeDecoration(
+                color: Colors.blue,
+                shape: CircleBorder()
+              ),
+              child: IconButton(
+                icon: Icon(Icons.timer),
+                color: Colors.white,
+                tooltip: "Ink decoration",
+                onPressed: () {},
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

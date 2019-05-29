@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'buttons/ButtonPage.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -47,14 +46,12 @@ class _MyHomePageState extends State<MyHomePage> {
             )));
   }
 
-
-  Widget _buttonsExample(BuildContext context){
+  Widget _buttonsExample(BuildContext context) {
     return RaisedButton(
       onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) {
-              return ButtonsPage();
-            }));
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return ButtonsPage();
+        }));
       },
       color: Colors.blue,
       textColor: Colors.white,
