@@ -10,6 +10,7 @@ class ButtonsPage extends StatefulWidget {
 class ButtonState extends State<ButtonsPage> {
   int _value = 0;
   String dropDownValue = "One";
+  String _popupMenuValue = "None";
   FloatingButtonType _floatingButtonType = FloatingButtonType.Action;
 
   Widget _buildScroll(Widget child) {
@@ -362,8 +363,6 @@ class ButtonState extends State<ButtonsPage> {
     );
   }
 
-  String _popupMenuValue = "None";
-
   Widget _popupMenuButtons(BuildContext context) {
     return Material(
       color: Colors.white,
@@ -375,7 +374,7 @@ class ButtonState extends State<ButtonsPage> {
           children: <Widget>[
             Container(
               alignment: Alignment.center,
-              child: Text("PopupMenuButtons"),
+              child: Text("PopupMenuButtons", style: TextStyle(fontWeight: FontWeight.bold),),
             ),
             Row(
               children: <Widget>[
