@@ -30,10 +30,9 @@ enum TestPage{
   main, buttons, basic
 }
 
-
 class _MyHomePageState extends State<MyHomePage> {
 
-  TestPage _testPage = TestPage.basic;
+  TestPage _testPage = TestPage.main;
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              _buttonsExample(context),
               _basicExample(context),
+              _buttonsExample(context),
             ],
           ),
         )

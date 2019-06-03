@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'ContainerPage.dart';
+
 class BasicPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -14,10 +16,16 @@ class BasicState extends State<BasicPage> {
       appBar: AppBar(
         title: Text("BasicPage"),
       ),
-      body: Material(
+      body: Container(
+        padding: EdgeInsets.all(8),
         child: Column(
           children: <Widget>[
-            Text("BasicPage")
+            RaisedButton(
+              child: Text("Container"),
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ContainerPage()));
+              },
+            )
           ],
         ),
       ),
