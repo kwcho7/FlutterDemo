@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'ContainerPage.dart';
 import 'ImagePage.dart';
 import 'RowPage.dart';
+import 'TextPage.dart';
 
 class BasicPage extends StatefulWidget {
   @override
@@ -38,6 +39,12 @@ class BasicState extends State<BasicPage> {
               child: Text("Image"),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ImagePage()));
+              },
+            ),
+            RaisedButton(
+              child: Text("Text"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => TextPage()));
               },
             )
           ],
