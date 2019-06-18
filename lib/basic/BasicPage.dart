@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'ContainerPage.dart';
+import 'RowPage.dart';
 
 class BasicPage extends StatefulWidget {
   @override
@@ -24,6 +25,12 @@ class BasicState extends State<BasicPage> {
               child: Text("Container"),
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ContainerPage()));
+              },
+            ),
+            RaisedButton(
+              child: Text("Row"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => RowPage()));
               },
             )
           ],
