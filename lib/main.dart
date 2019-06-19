@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'basic/BasicPage.dart';
-import 'buttons/ButtonPage.dart';
+import 'basic/basic_page.dart';
+import 'buttons/button_page.dart';
 
 void main() => runApp(MyApp());
 

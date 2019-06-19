@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'ContainerPage.dart';
-import 'IconPage.dart';
-import 'ImagePage.dart';
-import 'RowPage.dart';
-import 'TextPage.dart';
+import 'container_page.dart';
+import 'icon_page.dart';
+import 'image_page.dart';
+import 'row_page.dart';
+import 'scaffold_page.dart';
+import 'text_page.dart';
 
 class BasicPage extends StatefulWidget {
   @override
@@ -52,6 +53,12 @@ class BasicState extends State<BasicPage> {
               child: Text("Icon"),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => IconPage()));
+              },
+            ),
+            RaisedButton(
+              child: Text("Scaffold"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ScaffoldPage()));
               },
             )
           ],
