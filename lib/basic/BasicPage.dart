@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'ContainerPage.dart';
+import 'IconPage.dart';
 import 'ImagePage.dart';
 import 'RowPage.dart';
 import 'TextPage.dart';
@@ -45,6 +46,12 @@ class BasicState extends State<BasicPage> {
               child: Text("Text"),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => TextPage()));
+              },
+            ),
+            RaisedButton(
+              child: Text("Icon"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => IconPage()));
               },
             )
           ],
