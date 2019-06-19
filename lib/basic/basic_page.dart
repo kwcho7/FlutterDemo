@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'app_bar_page.dart';
 import 'container_page.dart';
 import 'icon_page.dart';
 import 'image_page.dart';
@@ -59,6 +60,12 @@ class BasicState extends State<BasicPage> {
               child: Text("Scaffold"),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => ScaffoldPage()));
+              },
+            ),
+            RaisedButton(
+              child: Text("AppBar"),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => AppBarPage()));
               },
             )
           ],
