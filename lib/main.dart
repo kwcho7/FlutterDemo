@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'basic/basic_page.dart';
 import 'buttons/button_page.dart';
+import 'layout/layout_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -80,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               _basicExample(context),
               _buttonsExample(context),
+              _layoutExample(context)
             ],
           ),
         )
@@ -109,6 +111,19 @@ class _MyHomePageState extends State<MyHomePage> {
       color: Colors.blue,
       textColor: Colors.white,
       child: Text("Button Example"),
+    );
+  }
+
+  Widget _layoutExample(BuildContext context) {
+    return RaisedButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return LayoutPage();
+        }));
+      },
+      color: Colors.blue,
+      textColor: Colors.white,
+      child: Text("Layout Example"),
     );
   }
 }
