@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'flow_page.dart';
 import 'fractionally_page.dart';
+import 'indexed_stack_page.dart';
 
 class LayoutPage extends StatelessWidget {
   @override
@@ -17,6 +18,7 @@ class LayoutPage extends StatelessWidget {
               children: <Widget>[
                 _flowWidget(context),
                 _fractionallyWidget(context),
+                _indexedStackWidget(context),
               ],
             ),
           )
@@ -38,6 +40,15 @@ class LayoutPage extends StatelessWidget {
       child: Text("Fractionally Layout"),
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => FractionallyPage()));
+      },
+    );
+  }
+
+  Widget _indexedStackWidget(BuildContext context){
+    return RaisedButton(
+      child: Text("IndexedStack"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => IndexedStackPage()));
       },
     );
   }
