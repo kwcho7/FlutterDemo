@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'flow_page.dart';
+import 'fractionally_page.dart';
 
 class LayoutPage extends StatelessWidget {
   @override
@@ -15,6 +16,7 @@ class LayoutPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 _flowWidget(context),
+                _fractionallyWidget(context),
               ],
             ),
           )
@@ -27,6 +29,15 @@ class LayoutPage extends StatelessWidget {
       child: Text("Flow Layout"),
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => FlowPage()));
+      },
+    );
+  }
+
+  Widget _fractionallyWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("Fractionally Layout"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => FractionallyPage()));
       },
     );
   }
