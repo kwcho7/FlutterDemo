@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'flow_page.dart';
 import 'fractionally_page.dart';
 import 'indexed_stack_page.dart';
+import 'listview_builder_page.dart';
 import 'listview_page.dart';
 
 class LayoutPage extends StatelessWidget {
@@ -14,14 +15,17 @@ class LayoutPage extends StatelessWidget {
             appBar: AppBar(
               title: Text("layout page"),
             ),
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                _flowWidget(context),
-                _fractionallyWidget(context),
-                _indexedStackWidget(context),
-                _listViewWidget(context),
-              ],
+            body: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  _flowWidget(context),
+                  _fractionallyWidget(context),
+                  _indexedStackWidget(context),
+                  _listViewWidget(context),
+                ],
+              ),
             ),
           )
       ),
@@ -56,11 +60,22 @@ class LayoutPage extends StatelessWidget {
   }
 
   Widget _listViewWidget(BuildContext context){
-    return RaisedButton(
-      child: Text("ListView"),
-      onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewPage()));
-      },
+    return Row(
+      children: <Widget>[
+        RaisedButton(
+          child: Text("ListView"),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewPage()));
+          },
+        ),
+        SizedBox(width: 8,),
+        RaisedButton(
+          child: Text("ListView Builder"),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewBuilderPage()));
+          },
+        ),
+      ],
     );
   }
 }
