@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+/// 적은수의 list를 표현할때 사용해야한다.
 class ListViewPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {

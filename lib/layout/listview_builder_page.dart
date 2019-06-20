@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+/// Holder 와 같이 전항목은 삭제되어진다. 대량의 리스트에 적합하다.
 class ListViewBuilderPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
