@@ -4,6 +4,7 @@ import 'flow_page.dart';
 import 'fractionally_page.dart';
 import 'indexed_stack_page.dart';
 import 'listview_builder_page.dart';
+import 'listview_items_page.dart';
 import 'listview_page.dart';
 
 class LayoutPage extends StatelessWidget {
@@ -73,6 +74,13 @@ class LayoutPage extends StatelessWidget {
           child: Text("ListView Builder"),
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewBuilderPage()));
+          },
+        ),
+        SizedBox(width: 8,),
+        RaisedButton(
+          child: Text("ListView Items"),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewItemsPage()));
           },
         ),
       ],
