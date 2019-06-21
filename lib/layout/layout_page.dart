@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'custom_multiple_child_page.dart';
 import 'flow_page.dart';
 import 'fractionally_page.dart';
 import 'indexed_stack_page.dart';
@@ -28,6 +29,7 @@ class LayoutPage extends StatelessWidget {
                   _indexedStackWidget(context),
                   _listViewWidget(context),
                   _layoutBuilderWidget(context),
+                  _customMultipleChildWidget(context),
                 ],
               ),
             ),
@@ -106,6 +108,17 @@ class LayoutPage extends StatelessWidget {
       onPressed: () {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => LayoutBuilderPage()));
+      },
+    );
+  }
+
+
+  Widget _customMultipleChildWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("CustomMultipleChild"),
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => CustomMultipleChildPage()));
       },
     );
   }
