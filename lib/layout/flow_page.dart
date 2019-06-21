@@ -28,7 +28,6 @@ class FlowState extends State<FlowPage> with SingleTickerProviderStateMixin{
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
             title: Text("FlowPage"),
@@ -49,7 +48,6 @@ class FlowState extends State<FlowPage> with SingleTickerProviderStateMixin{
             }
           ),
         ),
-      ),
     );
   }
 

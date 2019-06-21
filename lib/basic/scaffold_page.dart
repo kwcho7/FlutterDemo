@@ -6,8 +6,7 @@ class ScaffoldPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ScaffoldBodyWidget bodyWidget = ScaffoldBodyWidget();
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text("Scaffold"),
         ),
@@ -39,7 +38,6 @@ class ScaffoldPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
     );
   }
 }

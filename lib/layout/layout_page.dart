@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'flow_page.dart';
 import 'fractionally_page.dart';
 import 'indexed_stack_page.dart';
+import 'layout_builder_page.dart';
 import 'listview_builder_page.dart';
 import 'listview_items_page.dart';
 import 'listview_page.dart';
@@ -11,12 +12,13 @@ class LayoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              title: Text("layout page"),
-            ),
-            body: Container(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("layout page"),
+          ),
+          body: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.all(8),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,11 +27,12 @@ class LayoutPage extends StatelessWidget {
                   _fractionallyWidget(context),
                   _indexedStackWidget(context),
                   _listViewWidget(context),
+                  _layoutBuilderWidget(context),
                 ],
               ),
             ),
-          )
-      ),
+          ),
+        ),
     );
   }
 
@@ -37,7 +40,8 @@ class LayoutPage extends StatelessWidget {
     return RaisedButton(
       child: Text("Flow Layout"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => FlowPage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => FlowPage()));
       },
     );
   }
@@ -46,44 +50,63 @@ class LayoutPage extends StatelessWidget {
     return RaisedButton(
       child: Text("Fractionally Layout"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => FractionallyPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => FractionallyPage()));
       },
     );
   }
 
-  Widget _indexedStackWidget(BuildContext context){
+  Widget _indexedStackWidget(BuildContext context) {
     return RaisedButton(
       child: Text("IndexedStack"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => IndexedStackPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => IndexedStackPage()));
       },
     );
   }
 
-  Widget _listViewWidget(BuildContext context){
+  Widget _listViewWidget(BuildContext context) {
     return Row(
       children: <Widget>[
         RaisedButton(
           child: Text("ListView"),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewPage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ListViewPage()));
           },
         ),
-        SizedBox(width: 8,),
+        SizedBox(
+          width: 8,
+        ),
         RaisedButton(
           child: Text("ListView Builder"),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewBuilderPage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ListViewBuilderPage()));
           },
         ),
-        SizedBox(width: 8,),
+        SizedBox(
+          width: 8,
+        ),
         RaisedButton(
           child: Text("ListView Items"),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewItemsPage()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => ListViewItemsPage()));
           },
         ),
       ],
+    );
+  }
+
+  Widget _layoutBuilderWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("LayoutBuilder"),
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => LayoutBuilderPage()));
+      },
     );
   }
 }

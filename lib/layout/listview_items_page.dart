@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ListViewItemsPage extends StatefulWidget{
+class ListViewItemsPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return ListViewItemsState();
@@ -9,8 +9,7 @@ class ListViewItemsPage extends StatefulWidget{
 
 class ListViewItemsState extends State<ListViewItemsPage> {
   List<Item> _itemList = [
-    HeaderItem()
-      ..title = "HeaderItem",
+    HeaderItem()..title = "HeaderItem",
     PersonItem()
       ..name = "Kim~~~"
       ..age = 19,
@@ -23,9 +22,7 @@ class ListViewItemsState extends State<ListViewItemsPage> {
     PersonItem()
       ..name = "Park~~"
       ..age = 19,
-
-    HeaderItem()
-      ..title = "HeaderItem 2",
+    HeaderItem()..title = "HeaderItem 2",
     PersonItem()
       ..name = "Kim 1~~~"
       ..age = 119,
@@ -38,10 +35,7 @@ class ListViewItemsState extends State<ListViewItemsPage> {
     PersonItem()
       ..name = "Park 4~~"
       ..age = 419,
-
-
-    HeaderItem()
-      ..title = "HeaderItem 3",
+    HeaderItem()..title = "HeaderItem 3",
     PersonItem()
       ..name = "Kim 5~~~"
       ..age = 519,
@@ -59,42 +53,44 @@ class ListViewItemsState extends State<ListViewItemsPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: SafeArea(child: Scaffold(
+      child: Scaffold(
         appBar: AppBar(
           title: Text("ListViewItems"),
         ),
-        body: ListViewWidget(itemList: _itemList,),
-      )),
+        body: ListViewWidget(
+          itemList: _itemList,
+        ),
+      ),
     );
   }
 }
 
-class ListViewWidget extends StatelessWidget{
-
-  const ListViewWidget({Key key, this.itemList}): super(key: key);
+class ListViewWidget extends StatelessWidget {
+  const ListViewWidget({Key key, this.itemList}) : super(key: key);
 
   final List<Item> itemList;
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemBuilder: (BuildContext context, int index){
-        if(itemList[index] is PersonItem){
-          return PersonWidget(personItem: itemList[index],);
-        }
-        else{
-          return HeaderWidget(headerItem: itemList[index],);
+      itemBuilder: (BuildContext context, int index) {
+        if (itemList[index] is PersonItem) {
+          return PersonWidget(
+            personItem: itemList[index],
+          );
+        } else {
+          return HeaderWidget(
+            headerItem: itemList[index],
+          );
         }
       },
       itemCount: itemList.length,
     );
   }
-
 }
 
-class HeaderWidget extends StatelessWidget{
-
-  const HeaderWidget({Key key, this.headerItem}): super(key: key);
+class HeaderWidget extends StatelessWidget {
+  const HeaderWidget({Key key, this.headerItem}) : super(key: key);
 
   final HeaderItem headerItem;
 
@@ -102,9 +98,7 @@ class HeaderWidget extends StatelessWidget{
   Widget build(BuildContext context) {
     return Container(
       height: 40,
-      decoration: BoxDecoration(
-        color: Colors.grey[200]
-      ),
+      decoration: BoxDecoration(color: Colors.grey[200]),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Padding(
@@ -112,8 +106,7 @@ class HeaderWidget extends StatelessWidget{
           child: Text(
             headerItem.title,
             textAlign: TextAlign.center,
-            style: TextStyle(
-            ),
+            style: TextStyle(),
           ),
         ),
       ),
@@ -121,37 +114,36 @@ class HeaderWidget extends StatelessWidget{
   }
 }
 
-class PersonWidget extends StatelessWidget{
-
-  const PersonWidget({Key key, this.personItem}): super(key: key);
+class PersonWidget extends StatelessWidget {
+  const PersonWidget({Key key, this.personItem}) : super(key: key);
 
   final PersonItem personItem;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-     child: Container(
-       padding: EdgeInsets.all(8),
-       child: Align(
-         alignment: Alignment.centerLeft,
-         child: Row(
-           children: <Widget>[
-             Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-               children: <Widget>[
-                 Text("Name: " + personItem.name),
-                 Text("Age: " + personItem.age.toString()),
-               ],
-             )
-           ],
-         ),
-       ),
-     ),
+      child: Container(
+        padding: EdgeInsets.all(8),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Row(
+            children: <Widget>[
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text("Name: " + personItem.name),
+                  Text("Age: " + personItem.age.toString()),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
 
-class Item{
+class Item {
   String description;
 }
 
@@ -160,6 +152,6 @@ class PersonItem extends Item {
   String name = "name";
 }
 
-class HeaderItem extends Item{
+class HeaderItem extends Item {
   String title = "title2";
 }

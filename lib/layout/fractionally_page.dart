@@ -5,32 +5,29 @@ class FractionallyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              title: Text("Fractionally"),
-            ),
-            body: SizedBox.expand(
-              child: Stack(
-                fit: StackFit.expand,
-                children: <Widget>[
-                  FractionallyWidget(alignment: Alignment.topLeft),
-                  FractionallyWidget(alignment: Alignment.topRight),
-                  FractionallyWidget(alignment: Alignment.bottomLeft),
-                  FractionallyWidget(alignment: Alignment.bottomRight),
-                  FractionallyWidget(alignment: Alignment.center),
-                ],
-              ),
-            ),
-          )
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Fractionally"),
+        ),
+        body: SizedBox.expand(
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              FractionallyWidget(alignment: Alignment.topLeft),
+              FractionallyWidget(alignment: Alignment.topRight),
+              FractionallyWidget(alignment: Alignment.bottomLeft),
+              FractionallyWidget(alignment: Alignment.bottomRight),
+              FractionallyWidget(alignment: Alignment.center),
+            ],
+          ),
+        ),
       ),
     );
   }
 }
 
-class FractionallyWidget extends StatelessWidget{
-
-  const FractionallyWidget({Key key, this.alignment}): super(key: key);
+class FractionallyWidget extends StatelessWidget {
+  const FractionallyWidget({Key key, this.alignment}) : super(key: key);
 
   final Alignment alignment;
 

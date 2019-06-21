@@ -1,48 +1,48 @@
 import 'package:flutter/material.dart';
 
-class TextPage extends StatelessWidget{
+class TextPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Text"),
-        ),
-        body: Material(
-          color: Colors.grey[300],
-          child: Container(
-            constraints: BoxConstraints.expand(),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                _defaultTextWidget("defaultText"),
-                _sizeTextWidget("Size 20 Text", 20.0),
-                _paintBackgroundStyleTextWidget("Paint background", Colors.amber),
-                _paintForegroundStypeTextWidget("Paint Forground", Colors.black),
-                _fontWeightTextWidget("Font Weight.BOLD"),
-                _fontWeight700TextWidget("Font Weight.700"),
-                _letterSpaceTextWidget("Letter Spacing.", 10),
-                _wordSpaceTextWidget("Word Spacing", 10),
-                _shadowTextWidget(
-                    "Shadow Text", [Shadow(
-                        color: Colors.pink,
-                        offset: Offset(1, 1),
-                        blurRadius: 1
-                      ),]),
-                _decoratorTextWidget("Text Decoration"),
-                _decoratorUnderLineTextWidget("Text Decoration UnderLine"),
-                _decoratorOverLineDashTextWidget("Text Decoration OverLine"),
-                _alignTextWidget("Align right", TextAlign.right, Colors.blue[200]),
-                _alignTextWidget("Align left", TextAlign.left, Colors.blue[300]),
-                _alignTextWidget("Align center", TextAlign.center, Colors.blue[400]),
-                _softWrapTextWidget("Soft wrap test false.. long text wrap test.", false),
-                _softWrapTextWidget("Soft wrap test true... long text wrap test.", true),
-                _maxLineTextWidget("max line 1 test, abcd efg hijk lmn opqr stu "),
-                _scaleFactorTextWidget("scale factor"),
-                _scaleFactor2TextWidget("scale factor2"),
-              ],
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Text"),
+      ),
+      body: Material(
+        color: Colors.grey[300],
+        child: Container(
+          constraints: BoxConstraints.expand(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              _defaultTextWidget("defaultText"),
+              _sizeTextWidget("Size 20 Text", 20.0),
+              _paintBackgroundStyleTextWidget("Paint background", Colors.amber),
+              _paintForegroundStypeTextWidget("Paint Forground", Colors.black),
+              _fontWeightTextWidget("Font Weight.BOLD"),
+              _fontWeight700TextWidget("Font Weight.700"),
+              _letterSpaceTextWidget("Letter Spacing.", 10),
+              _wordSpaceTextWidget("Word Spacing", 10),
+              _shadowTextWidget("Shadow Text", [
+                Shadow(color: Colors.pink, offset: Offset(1, 1), blurRadius: 1),
+              ]),
+              _decoratorTextWidget("Text Decoration"),
+              _decoratorUnderLineTextWidget("Text Decoration UnderLine"),
+              _decoratorOverLineDashTextWidget("Text Decoration OverLine"),
+              _alignTextWidget(
+                  "Align right", TextAlign.right, Colors.blue[200]),
+              _alignTextWidget("Align left", TextAlign.left, Colors.blue[300]),
+              _alignTextWidget(
+                  "Align center", TextAlign.center, Colors.blue[400]),
+              _softWrapTextWidget(
+                  "Soft wrap test false.. long text wrap test.", false),
+              _softWrapTextWidget(
+                  "Soft wrap test true... long text wrap test.", true),
+              _maxLineTextWidget(
+                  "max line 1 test, abcd efg hijk lmn opqr stu "),
+              _scaleFactorTextWidget("scale factor"),
+              _scaleFactor2TextWidget("scale factor2"),
+            ],
           ),
         ),
       ),
@@ -50,22 +50,18 @@ class TextPage extends StatelessWidget{
   }
 
   // 기본 Text Widget
-  Widget _defaultTextWidget(String text){
-    return Text(text,
-      style: TextStyle(
-        backgroundColor: Colors.pink[100]
-      ),
+  Widget _defaultTextWidget(String text) {
+    return Text(
+      text,
+      style: TextStyle(backgroundColor: Colors.pink[100]),
     );
   }
 
   // font size 를 변경한다.
-  Widget _sizeTextWidget(String text, double textSize){
+  Widget _sizeTextWidget(String text, double textSize) {
     return Text(
       text,
-      style: TextStyle(
-        fontSize: textSize,
-        backgroundColor: Colors.pink[100]
-      ),
+      style: TextStyle(fontSize: textSize, backgroundColor: Colors.pink[100]),
     );
   }
 
@@ -74,11 +70,10 @@ class TextPage extends StatelessWidget{
     return Text(
       text,
       style: TextStyle(
-        background: Paint()
+          background: Paint()
             ..color = backgroundColor
             ..style = PaintingStyle.stroke
-            ..strokeWidth = 2
-      ),
+            ..strokeWidth = 2),
     );
   }
 
@@ -87,11 +82,10 @@ class TextPage extends StatelessWidget{
     return Text(
       text,
       style: TextStyle(
-        fontSize: 30,
+          fontSize: 30,
           foreground: Paint()
             ..color = forgroundColor
-            ..style = PaintingStyle.stroke
-      ),
+            ..style = PaintingStyle.stroke),
     );
   }
 
@@ -99,9 +93,7 @@ class TextPage extends StatelessWidget{
   Widget _fontWeightTextWidget(String text) {
     return Text(
       text,
-      style: TextStyle(
-        fontWeight: FontWeight.bold
-      ),
+      style: TextStyle(fontWeight: FontWeight.bold),
     );
   }
 
@@ -109,9 +101,7 @@ class TextPage extends StatelessWidget{
   Widget _fontWeight700TextWidget(String text) {
     return Text(
       text,
-      style: TextStyle(
-          fontWeight: FontWeight.w700
-      ),
+      style: TextStyle(fontWeight: FontWeight.w700),
     );
   }
 
@@ -119,9 +109,7 @@ class TextPage extends StatelessWidget{
   Widget _letterSpaceTextWidget(String text, double spacing) {
     return Text(
       text,
-      style: TextStyle(
-        letterSpacing: spacing
-      ),
+      style: TextStyle(letterSpacing: spacing),
     );
   }
 
@@ -129,9 +117,7 @@ class TextPage extends StatelessWidget{
   Widget _wordSpaceTextWidget(String text, double spacing) {
     return Text(
       text,
-      style: TextStyle(
-        wordSpacing: spacing
-      ),
+      style: TextStyle(wordSpacing: spacing),
     );
   }
 
@@ -147,38 +133,33 @@ class TextPage extends StatelessWidget{
   }
 
   // decorator
-  Widget _decoratorTextWidget(String text){
+  Widget _decoratorTextWidget(String text) {
     return Text(
       text,
-      style: TextStyle(
-        decoration: TextDecoration.lineThrough
-      ),
+      style: TextStyle(decoration: TextDecoration.lineThrough),
     );
   }
 
   // decorator underLine
-  Widget _decoratorUnderLineTextWidget(String text){
+  Widget _decoratorUnderLineTextWidget(String text) {
     return Text(
       text,
-      style: TextStyle(
-          decoration: TextDecoration.underline
-      ),
+      style: TextStyle(decoration: TextDecoration.underline),
     );
   }
 
   // decorator overLine dash
-  Widget _decoratorOverLineDashTextWidget(String text){
+  Widget _decoratorOverLineDashTextWidget(String text) {
     return Text(
       text,
       style: TextStyle(
-        decoration: TextDecoration.overline,
-        decorationStyle: TextDecorationStyle.dashed
-      ),
+          decoration: TextDecoration.overline,
+          decorationStyle: TextDecorationStyle.dashed),
     );
   }
 
   // align
-  Widget _alignTextWidget(String text, TextAlign textAlign, Color color){
+  Widget _alignTextWidget(String text, TextAlign textAlign, Color color) {
     return Container(
       color: color,
       constraints: BoxConstraints.expand(height: 30),
@@ -202,7 +183,7 @@ class TextPage extends StatelessWidget{
   }
 
   // max line
-  Widget _maxLineTextWidget(String text){
+  Widget _maxLineTextWidget(String text) {
     return Container(
       constraints: BoxConstraints.expand(width: 250, height: 40),
       color: Colors.yellow[300],
@@ -229,4 +210,3 @@ class TextPage extends StatelessWidget{
     );
   }
 }
-

@@ -28,20 +28,21 @@ class ListViewBuilderState extends State<ListViewBuilderPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text("ListViewBuilder"),
-          ),
-          body: _buildList(context, _items),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              _items.add(Random().nextInt(100));
-              _scrollController.animateTo(_scrollController.position.maxScrollExtent + 100, duration: Duration(milliseconds: 100), curve: Curves.linear);
-              setState(() {});
-            },
-            child: Icon(Icons.add),
-          ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("ListViewBuilder"),
+        ),
+        body: _buildList(context, _items),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            _items.add(Random().nextInt(100));
+            _scrollController.animateTo(
+                _scrollController.position.maxScrollExtent + 100,
+                duration: Duration(milliseconds: 100),
+                curve: Curves.linear);
+            setState(() {});
+          },
+          child: Icon(Icons.add),
         ),
       ),
     );
@@ -50,14 +51,14 @@ class ListViewBuilderState extends State<ListViewBuilderPage> {
   Widget _buildList(BuildContext context, List<int> _items) {
     return ListView.builder(
       controller: _scrollController,
-      itemBuilder: (BuildContext context, int index){
+      itemBuilder: (BuildContext context, int index) {
         return _buildItem(_items[index]);
       },
       itemCount: _items.length,
     );
   }
 
-  Widget _buildItem(int displayValue){
+  Widget _buildItem(int displayValue) {
     return Container(
       height: 100,
       child: FittedBox(

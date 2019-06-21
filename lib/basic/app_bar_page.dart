@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 class AppBarPage extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text("AppBar"),
         ),
         body: _appbarBody(context),
-      ),
     );
   }
 

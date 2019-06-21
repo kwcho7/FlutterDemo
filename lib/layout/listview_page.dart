@@ -18,6 +18,7 @@ class ListViewState extends State<ListViewPage> {
     _scrollController = ScrollController();
     super.initState();
   }
+
   @override
   void dispose() {
     _scrollController.dispose();
@@ -27,23 +28,26 @@ class ListViewState extends State<ListViewPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text("ListView"),
-          ),
-          body: ListView(
-            controller: _scrollController,
-            children: _list.map(_buildItem).toList(),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              _list.add(Random().nextInt(100));
-              _scrollController.animateTo(_scrollController.position.maxScrollExtent + 100, duration: Duration(milliseconds: 500), curve: Curves.ease);
-              setState(() {},);
-            },
-            child: Icon(Icons.add),
-          ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("ListView"),
+        ),
+        body: ListView(
+          controller: _scrollController,
+          children: _list.map(_buildItem).toList(),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            _list.add(Random().nextInt(100));
+            _scrollController.animateTo(
+                _scrollController.position.maxScrollExtent + 100,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.ease);
+            setState(
+              () {},
+            );
+          },
+          child: Icon(Icons.add),
         ),
       ),
     );
