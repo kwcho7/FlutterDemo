@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_demo/layout/grid_layout_builder_page.dart';
+import 'package:flutter_app_demo/layout/grid_layout_page.dart';
 
 import 'custom_multiple_child_page.dart';
 import 'flow_page.dart';
@@ -30,6 +32,7 @@ class LayoutPage extends StatelessWidget {
                   _listViewWidget(context),
                   _layoutBuilderWidget(context),
                   _customMultipleChildWidget(context),
+                  _gridLayoutWidget(context),
                 ],
               ),
             ),
@@ -119,6 +122,37 @@ class LayoutPage extends StatelessWidget {
       onPressed: () {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => CustomMultipleChildPage()));
+      },
+    );
+  }
+
+
+
+
+  Widget _gridLayoutWidget(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        _gridLayoutCountWidget(context),
+        SizedBox(width: 8,),
+        _gridLayoutBuilderWidget(context),
+      ],
+    );
+  }
+
+  Widget _gridLayoutCountWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("GrideLayout"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => GridLayoutPage()));
+      },
+    );
+  }
+
+  Widget _gridLayoutBuilderWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("GridLayoutBuilder"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (contxt) => GridLayoutBuilderPage()));
       },
     );
   }
