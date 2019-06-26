@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_demo/layout/grid_layout_builder_page.dart';
 import 'package:flutter_app_demo/layout/grid_layout_page.dart';
+import 'package:flutter_app_demo/layout/wrap_page.dart';
 
 import 'custom_multiple_child_page.dart';
 import 'flow_page.dart';
@@ -33,6 +34,7 @@ class LayoutPage extends StatelessWidget {
                   _layoutBuilderWidget(context),
                   _customMultipleChildWidget(context),
                   _gridLayoutWidget(context),
+                  _wrapWidget(context),
                 ],
               ),
             ),
@@ -153,6 +155,15 @@ class LayoutPage extends StatelessWidget {
       child: Text("GridLayoutBuilder"),
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (contxt) => GridLayoutBuilderPage()));
+      },
+    );
+  }
+
+  Widget _wrapWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("WrapLayout"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => WrapPage()));
       },
     );
   }
