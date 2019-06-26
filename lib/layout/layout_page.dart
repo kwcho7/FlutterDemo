@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_demo/layout/grid_layout_builder_page.dart';
 import 'package:flutter_app_demo/layout/grid_layout_page.dart';
+import 'package:flutter_app_demo/layout/table_page.dart';
 import 'package:flutter_app_demo/layout/wrap_page.dart';
 
 import 'custom_multiple_child_page.dart';
@@ -35,6 +36,7 @@ class LayoutPage extends StatelessWidget {
                   _customMultipleChildWidget(context),
                   _gridLayoutWidget(context),
                   _wrapWidget(context),
+                  _tableWidget(context),
                 ],
               ),
             ),
@@ -164,6 +166,15 @@ class LayoutPage extends StatelessWidget {
       child: Text("WrapLayout"),
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => WrapPage()));
+      },
+    );
+  }
+
+  Widget _tableWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("Table Layout"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => TablePage()));
       },
     );
   }
