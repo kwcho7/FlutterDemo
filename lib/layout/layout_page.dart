@@ -21,34 +21,48 @@ class LayoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text("layout page"),
-          ),
-          body: SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.all(8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _flowWidget(context),
-                  _fractionallyWidget(context),
-                  _indexedStackWidget(context),
-                  _listViewWidget(context),
-                  _layoutBuilderWidget(context),
-                  _customMultipleChildWidget(context),
-                  _gridLayoutWidget(context),
-                  _wrapWidget(context),
-                  _tableWidget(context),
-                  _intrinsicWidget(context),
-                  _visibilityWidget(context),
-                  _overflowBoxWidget(context),
-                ],
-              ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("layout page"),
+        ),
+        body: _scrollableVertical(
+          child: Container(
+            padding: EdgeInsets.all(8),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                _flowWidget(context),
+                _fractionallyWidget(context),
+                _indexedStackWidget(context),
+                _scrollableHorizontal(_listViewWidget(context)),
+                _layoutBuilderWidget(context),
+                _customMultipleChildWidget(context),
+                _gridLayoutWidget(context),
+                _wrapWidget(context),
+                _tableWidget(context),
+                _intrinsicWidget(context),
+                _visibilityWidget(context),
+                _overflowBoxWidget(context),
+              ],
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _scrollableHorizontal(Widget child) {
+    return SingleChildScrollView(
+      child: child,
+      scrollDirection: Axis.horizontal,
+    );
+  }
+
+  Widget _scrollableVertical({Widget child}) {
+    return SingleChildScrollView(
+      child: child,
+      scrollDirection: Axis.vertical,
     );
   }
 
@@ -126,7 +140,6 @@ class LayoutPage extends StatelessWidget {
     );
   }
 
-
   Widget _customMultipleChildWidget(BuildContext context) {
     return RaisedButton(
       child: Text("CustomMultipleChild"),
@@ -141,7 +154,9 @@ class LayoutPage extends StatelessWidget {
     return Row(
       children: <Widget>[
         _gridLayoutCountWidget(context),
-        SizedBox(width: 8,),
+        SizedBox(
+          width: 8,
+        ),
         _gridLayoutBuilderWidget(context),
       ],
     );
@@ -151,7 +166,8 @@ class LayoutPage extends StatelessWidget {
     return RaisedButton(
       child: Text("GrideLayout"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => GridLayoutPage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => GridLayoutPage()));
       },
     );
   }
@@ -160,7 +176,8 @@ class LayoutPage extends StatelessWidget {
     return RaisedButton(
       child: Text("GridLayoutBuilder"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (contxt) => GridLayoutBuilderPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (contxt) => GridLayoutBuilderPage()));
       },
     );
   }
@@ -169,7 +186,8 @@ class LayoutPage extends StatelessWidget {
     return RaisedButton(
       child: Text("WrapLayout"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => WrapPage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => WrapPage()));
       },
     );
   }
@@ -178,7 +196,8 @@ class LayoutPage extends StatelessWidget {
     return RaisedButton(
       child: Text("Table Layout"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => TablePage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => TablePage()));
       },
     );
   }
@@ -187,7 +206,9 @@ class LayoutPage extends StatelessWidget {
     return Row(
       children: <Widget>[
         _intrinsicWidthWidget(context),
-        SizedBox(width: 8,),
+        SizedBox(
+          width: 8,
+        ),
         _intrinsicHeightWidget(context),
       ],
     );
@@ -197,7 +218,8 @@ class LayoutPage extends StatelessWidget {
     return RaisedButton(
       child: Text("IntrinsicWidth"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => IntrinsicWidthPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => IntrinsicWidthPage()));
       },
     );
   }
@@ -206,7 +228,8 @@ class LayoutPage extends StatelessWidget {
     return RaisedButton(
       child: Text("IntrinsicHeight"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => IntrinsicHeightPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => IntrinsicHeightPage()));
       },
     );
   }
@@ -215,7 +238,8 @@ class LayoutPage extends StatelessWidget {
     return RaisedButton(
       child: Text("Visibility"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => VisibilityPage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => VisibilityPage()));
       },
     );
   }
@@ -224,7 +248,8 @@ class LayoutPage extends StatelessWidget {
     return RaisedButton(
       child: Text("OverflowBox"),
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => OverflowBoxPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => OverflowBoxPage()));
       },
     );
   }
