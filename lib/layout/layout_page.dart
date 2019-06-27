@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_demo/layout/grid_layout_builder_page.dart';
 import 'package:flutter_app_demo/layout/grid_layout_page.dart';
+import 'package:flutter_app_demo/layout/overflow_box_page.dart';
 import 'package:flutter_app_demo/layout/table_page.dart';
 import 'package:flutter_app_demo/layout/visiblity_page.dart';
 import 'package:flutter_app_demo/layout/wrap_page.dart';
@@ -42,6 +43,7 @@ class LayoutPage extends StatelessWidget {
                   _tableWidget(context),
                   _intrinsicWidget(context),
                   _visibilityWidget(context),
+                  _overflowBoxWidget(context),
                 ],
               ),
             ),
@@ -214,6 +216,15 @@ class LayoutPage extends StatelessWidget {
       child: Text("Visibility"),
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => VisibilityPage()));
+      },
+    );
+  }
+
+  Widget _overflowBoxWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("OverflowBox"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => OverflowBoxPage()));
       },
     );
   }
