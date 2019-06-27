@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_demo/layout/grid_layout_builder_page.dart';
 import 'package:flutter_app_demo/layout/grid_layout_page.dart';
 import 'package:flutter_app_demo/layout/table_page.dart';
+import 'package:flutter_app_demo/layout/visiblity_page.dart';
 import 'package:flutter_app_demo/layout/wrap_page.dart';
 
 import 'custom_multiple_child_page.dart';
@@ -40,6 +41,7 @@ class LayoutPage extends StatelessWidget {
                   _wrapWidget(context),
                   _tableWidget(context),
                   _intrinsicWidget(context),
+                  _visibilityWidget(context),
                 ],
               ),
             ),
@@ -203,6 +205,15 @@ class LayoutPage extends StatelessWidget {
       child: Text("IntrinsicHeight"),
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => IntrinsicHeightPage()));
+      },
+    );
+  }
+
+  Widget _visibilityWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("Visibility"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => VisibilityPage()));
       },
     );
   }
