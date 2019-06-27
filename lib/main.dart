@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_demo/scroll/scroll_page.dart';
 
 import 'basic/basic_page.dart';
 import 'buttons/button_page.dart';
@@ -28,7 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 enum TestPage{
-  main, buttons, basic
+  main, buttons, basic, layout, scroll
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -51,6 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       case TestPage.buttons:
       case TestPage.basic:
+      case TestPage.layout:
+      case TestPage.scroll:
         return null;
       default:
         throw Exception("not supported testPage.$testPage");
@@ -65,6 +68,10 @@ class _MyHomePageState extends State<MyHomePage> {
         return ButtonsPage();
       case TestPage.basic:
         return BasicPage();
+      case TestPage.layout:
+        return LayoutPage();
+      case TestPage.scroll:
+        return ScrollPage();
       default:
         throw Exception("not supported testPage.$testPage");
     }
@@ -81,7 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               _basicExample(context),
               _buttonsExample(context),
-              _layoutExample(context)
+              _layoutExample(context),
+              _scrollExample(context),
             ],
           ),
         )
@@ -124,6 +132,20 @@ class _MyHomePageState extends State<MyHomePage> {
       color: Colors.blue,
       textColor: Colors.white,
       child: Text("Layout Example"),
+    );
+  }
+
+
+  Widget _scrollExample(BuildContext context) {
+    return RaisedButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return ScrollPage();
+        }));
+      },
+      color: Colors.blue,
+      textColor: Colors.white,
+      child: Text("Scroll Example"),
     );
   }
 }
