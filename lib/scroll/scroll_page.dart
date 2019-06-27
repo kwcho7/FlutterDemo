@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_demo/scroll/page_view_page.dart';
+import 'package:flutter_app_demo/scroll/refresh_indicator_page.dart';
 
 class ScrollPage extends StatelessWidget {
   @override
@@ -14,6 +15,7 @@ class ScrollPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               _pageViewWidget(context),
+              _refreshIndicatorWidget(context),
             ],
           ),
         ),
@@ -26,6 +28,15 @@ class ScrollPage extends StatelessWidget {
       child: Text("PageView"),
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) => PageViewPage()));
+      },
+    );
+  }
+
+  Widget _refreshIndicatorWidget(BuildContext context){
+    return RaisedButton(
+      child: Text("RefreshIndicatorPage"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => RefreshIndicatorPage()));
       },
     );
   }
