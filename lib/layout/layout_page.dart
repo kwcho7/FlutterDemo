@@ -6,6 +6,8 @@ import 'custom_multiple_child_page.dart';
 import 'flow_page.dart';
 import 'fractionally_page.dart';
 import 'indexed_stack_page.dart';
+import 'intrinsic_height_page.dart';
+import 'intrinsic_width_page.dart';
 import 'layout_builder_page.dart';
 import 'listview_builder_page.dart';
 import 'listview_items_page.dart';
@@ -33,6 +35,7 @@ class LayoutPage extends StatelessWidget {
                   _layoutBuilderWidget(context),
                   _customMultipleChildWidget(context),
                   _gridLayoutWidget(context),
+                  _intrinsicWidget(context),
                 ],
               ),
             ),
@@ -153,6 +156,34 @@ class LayoutPage extends StatelessWidget {
       child: Text("GridLayoutBuilder"),
       onPressed: () {
         Navigator.push(context, MaterialPageRoute(builder: (contxt) => GridLayoutBuilderPage()));
+      },
+    );
+  }
+
+  Widget _intrinsicWidget(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        _intrinsicWidthWidget(context),
+        SizedBox(width: 8,),
+        _intrinsicHeightWidget(context),
+      ],
+    );
+  }
+
+  Widget _intrinsicWidthWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("IntrinsicWidth"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => IntrinsicWidthPage()));
+      },
+    );
+  }
+
+  Widget _intrinsicHeightWidget(BuildContext context) {
+    return RaisedButton(
+      child: Text("IntrinsicHeight"),
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => IntrinsicHeightPage()));
       },
     );
   }
