@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_demo/appbar/sliver_appbar_page.dart';
+import 'package:flutter_app_demo/async/future_builder_page.dart';
 import 'package:flutter_app_demo/scroll/scroll_page.dart';
 
 import 'basic/basic_page.dart';
@@ -31,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 enum TestPage{
-  main, buttons, basic, layout, scroll, appbar, input,
+  main, buttons, basic, layout, scroll, appbar, input, future
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -58,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case TestPage.scroll:
       case TestPage.appbar:
       case TestPage.input:
+      case TestPage.future:
         return null;
       default:
         throw Exception("not supported testPage.$testPage");
@@ -80,6 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return SliverAppbarPage();
       case TestPage.input:
         return TextFieldPage();
+      case TestPage.future:
+        return FutureBuilderPage();
       default:
         throw Exception("not supported testPage.$testPage");
     }
@@ -101,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                _scrollExample(context),
                _appbarExample(context),
                _inputPageExample(context),
+               _futureBuilderPageExample(context),
              ],
            ),
           ),
@@ -184,6 +189,19 @@ class _MyHomePageState extends State<MyHomePage> {
       color: Colors.blue,
       textColor: Colors.white,
       child: Text("Input Example"),
+    );
+  }
+
+  Widget _futureBuilderPageExample(BuildContext context) {
+    return RaisedButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return FutureBuilderPage();
+        }));
+      },
+      color: Colors.blue,
+      textColor: Colors.white,
+      child: Text("FutrueBuilder Example"),
     );
   }
 }
