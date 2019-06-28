@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_demo/appbar/sliver_appbar_page.dart';
 import 'package:flutter_app_demo/scroll/scroll_page.dart';
 
 import 'basic/basic_page.dart';
@@ -29,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 enum TestPage{
-  main, buttons, basic, layout, scroll
+  main, buttons, basic, layout, scroll, appbar
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -54,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case TestPage.basic:
       case TestPage.layout:
       case TestPage.scroll:
+      case TestPage.appbar:
         return null;
       default:
         throw Exception("not supported testPage.$testPage");
@@ -72,6 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return LayoutPage();
       case TestPage.scroll:
         return ScrollPage();
+      case TestPage.appbar:
+        return SliverAppbarPage();
       default:
         throw Exception("not supported testPage.$testPage");
     }
@@ -83,14 +87,17 @@ class _MyHomePageState extends State<MyHomePage> {
         alignment: Alignment.topLeft,
         padding: EdgeInsets.all(18),
         child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              _basicExample(context),
-              _buttonsExample(context),
-              _layoutExample(context),
-              _scrollExample(context),
-            ],
+          child: SingleChildScrollView(
+           child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: <Widget>[
+               _basicExample(context),
+               _buttonsExample(context),
+               _layoutExample(context),
+               _scrollExample(context),
+               _appbarExample(context),
+             ],
+           ),
           ),
         )
     );
@@ -146,6 +153,19 @@ class _MyHomePageState extends State<MyHomePage> {
       color: Colors.blue,
       textColor: Colors.white,
       child: Text("Scroll Example"),
+    );
+  }
+
+  Widget _appbarExample(BuildContext context) {
+    return RaisedButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return SliverAppbarPage();
+        }));
+      },
+      color: Colors.blue,
+      textColor: Colors.white,
+      child: Text("Appbar Example"),
     );
   }
 }
