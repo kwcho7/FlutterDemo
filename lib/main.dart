@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_demo/appbar/sliver_appbar_page.dart';
 import 'package:flutter_app_demo/async/future_builder_page.dart';
+import 'package:flutter_app_demo/async/stream_builder_page.dart';
 import 'package:flutter_app_demo/scroll/scroll_page.dart';
 
 import 'basic/basic_page.dart';
@@ -31,24 +32,19 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-enum TestPage{
-  main, buttons, basic, layout, scroll, appbar, input, future
-}
+enum TestPage { main, buttons, basic, layout, scroll, appbar, input, async }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   TestPage _testPage = TestPage.main;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: resolveAppBar(_testPage),
-        body: resolveWidget(_testPage)
-    );
+        appBar: resolveAppBar(_testPage), body: resolveWidget(_testPage));
   }
 
   AppBar resolveAppBar(TestPage testPage) {
-    switch(testPage){
+    switch (testPage) {
       case TestPage.main:
         return AppBar(
           title: Text("Flutter Demo"),
@@ -59,15 +55,15 @@ class _MyHomePageState extends State<MyHomePage> {
       case TestPage.scroll:
       case TestPage.appbar:
       case TestPage.input:
-      case TestPage.future:
+      case TestPage.async:
         return null;
       default:
         throw Exception("not supported testPage.$testPage");
     }
   }
 
-  Widget resolveWidget(TestPage testPage){
-    switch(testPage){
+  Widget resolveWidget(TestPage testPage) {
+    switch (testPage) {
       case TestPage.main:
         return _mainExample(context);
       case TestPage.buttons:
@@ -82,41 +78,40 @@ class _MyHomePageState extends State<MyHomePage> {
         return SliverAppbarPage();
       case TestPage.input:
         return TextFieldPage();
-      case TestPage.future:
-        return FutureBuilderPage();
+      case TestPage.async:
+        return _asyncWidget(context);
       default:
         throw Exception("not supported testPage.$testPage");
     }
   }
 
-  Widget _mainExample(BuildContext context){
+  Widget _mainExample(BuildContext context) {
     return Container(
         color: Colors.white,
         alignment: Alignment.topLeft,
         padding: EdgeInsets.all(18),
         child: SafeArea(
           child: SingleChildScrollView(
-           child: Column(
-             crossAxisAlignment: CrossAxisAlignment.start,
-             children: <Widget>[
-               _basicExample(context),
-               _buttonsExample(context),
-               _layoutExample(context),
-               _scrollExample(context),
-               _appbarExample(context),
-               _inputPageExample(context),
-               _futureBuilderPageExample(context),
-             ],
-           ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                _basicExample(context),
+                _buttonsExample(context),
+                _layoutExample(context),
+                _scrollExample(context),
+                _appbarExample(context),
+                _inputPageExample(context),
+                _asyncWidget(context),
+              ],
+            ),
           ),
-        )
-    );
+        ));
   }
 
-  Widget _basicExample(BuildContext context){
+  Widget _basicExample(BuildContext context) {
     return RaisedButton(
-      onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context){
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
           return BasicPage();
         }));
       },
@@ -151,7 +146,6 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Text("Layout Example"),
     );
   }
-
 
   Widget _scrollExample(BuildContext context) {
     return RaisedButton(
@@ -192,6 +186,21 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  Widget _asyncWidget(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: <Widget>[
+          _futureBuilderPageExample(context),
+          SizedBox(
+            width: 8,
+          ),
+          _streamBuilderPageExample(context),
+        ],
+      ),
+    );
+  }
+
   Widget _futureBuilderPageExample(BuildContext context) {
     return RaisedButton(
       onPressed: () {
@@ -202,6 +211,19 @@ class _MyHomePageState extends State<MyHomePage> {
       color: Colors.blue,
       textColor: Colors.white,
       child: Text("FutrueBuilder Example"),
+    );
+  }
+
+  Widget _streamBuilderPageExample(BuildContext context) {
+    return RaisedButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return StreamBuilderPage();
+        }));
+      },
+      color: Colors.blue,
+      textColor: Colors.white,
+      child: Text("StreamBuilder Example"),
     );
   }
 }
