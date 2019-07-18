@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_demo/appbar/sliver_appbar_page.dart';
 import 'package:flutter_app_demo/async/future_builder_page.dart';
 import 'package:flutter_app_demo/async/stream_builder_page.dart';
+import 'package:flutter_app_demo/provider/provider_page.dart';
 import 'package:flutter_app_demo/scroll/scroll_page.dart';
 
 import 'basic/basic_page.dart';
@@ -32,7 +33,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-enum TestPage { main, buttons, basic, layout, scroll, appbar, input, async }
+enum TestPage { main, buttons, basic, layout, scroll, appbar, input, async, provider }
 
 class _MyHomePageState extends State<MyHomePage> {
   TestPage _testPage = TestPage.main;
@@ -56,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case TestPage.appbar:
       case TestPage.input:
       case TestPage.async:
+      case TestPage.provider:
         return null;
       default:
         throw Exception("not supported testPage.$testPage");
@@ -80,6 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return TextFieldPage();
       case TestPage.async:
         return _asyncWidget(context);
+      case TestPage.provider:
+        return ProviderPage();
       default:
         throw Exception("not supported testPage.$testPage");
     }
@@ -102,6 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 _appbarExample(context),
                 _inputPageExample(context),
                 _asyncWidget(context),
+                _providerPageExample(context)
               ],
             ),
           ),
@@ -226,4 +231,19 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Text("StreamBuilder Example"),
     );
   }
+
+  Widget _providerPageExample(BuildContext context) {
+    return RaisedButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return ProviderPage();
+        }));
+      },
+      color: Colors.blue,
+      textColor: Colors.white,
+      child: Text("Provider Example"),
+    );
+  }
+
+
 }
