@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_demo/appbar/sliver_appbar_page.dart';
 import 'package:flutter_app_demo/async/future_builder_page.dart';
 import 'package:flutter_app_demo/async/stream_builder_page.dart';
+import 'package:flutter_app_demo/event/native_event_page.dart';
 import 'package:flutter_app_demo/provider/provider_page.dart';
 import 'package:flutter_app_demo/scroll/scroll_page.dart';
 
@@ -33,7 +34,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-enum TestPage { main, buttons, basic, layout, scroll, appbar, input, async, provider }
+enum TestPage { main, buttons, basic, layout, scroll, appbar, input, async, provider, native_event }
 
 class _MyHomePageState extends State<MyHomePage> {
   TestPage _testPage = TestPage.main;
@@ -58,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case TestPage.input:
       case TestPage.async:
       case TestPage.provider:
+      case TestPage.native_event:
         return null;
       default:
         throw Exception("not supported testPage.$testPage");
@@ -84,6 +86,8 @@ class _MyHomePageState extends State<MyHomePage> {
         return _asyncWidget(context);
       case TestPage.provider:
         return ProviderPage();
+      case TestPage.native_event:
+        return NativeEventPage();
       default:
         throw Exception("not supported testPage.$testPage");
     }
@@ -106,7 +110,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 _appbarExample(context),
                 _inputPageExample(context),
                 _asyncWidget(context),
-                _providerPageExample(context)
+                _providerPageExample(context),
+                _nativeEventPageExample(context),
               ],
             ),
           ),
@@ -242,6 +247,20 @@ class _MyHomePageState extends State<MyHomePage> {
       color: Colors.blue,
       textColor: Colors.white,
       child: Text("Provider Example"),
+    );
+  }
+
+
+  Widget _nativeEventPageExample(BuildContext context) {
+    return RaisedButton(
+      onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return NativeEventPage();
+        }));
+      },
+      color: Colors.blue,
+      textColor: Colors.white,
+      child: Text("NativeEvent Example"),
     );
   }
 
